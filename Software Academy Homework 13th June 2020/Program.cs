@@ -21,31 +21,31 @@ namespace Software_Academy_Homework_13th_June_2020
             { 0, 1, 1, 1, 1, 0, 1, 0, 1, 0 }
         };
 
-        static List<int> coordinateX;
-        static List<int> coordinateY;
+        static List<int> xPoint;
+        static List<int> yPoint;
 
         static bool PathExist(int index)
         {
-            if (index >= coordinateX.Count)
+            if (index >= xPoint.Count)
             {
                 return false;
             }
             else
             {
-                int row = coordinateY[index];
-                int col = coordinateX[index];
+                int row = yPoint[index];
+                int col = xPoint[index];
                 if (row == rows - 1 && col == cols - 1)
                 {
                     return true;
                 }
-                //up
-                IfCanBePathAdd((row + 1), col);
-                //down
-                IfCanBePathAdd((row - 1), col);
-                //left
-                IfCanBePathAdd(row, (col - 1));
-                //right
-                IfCanBePathAdd(row, (col + 1));
+                
+                IfCanBePathAdd((row + 1), col); //up
+              
+                IfCanBePathAdd((row - 1), col); //down
+             
+                IfCanBePathAdd(row, (col - 1)); //left
+                
+                IfCanBePathAdd(row, (col + 1)); //right
             }
             return PathExist(index + 1);
         }
@@ -56,19 +56,34 @@ namespace Software_Academy_Homework_13th_June_2020
                 matrix[row, col] == 0)
             {
                 matrix[row, col] = 1;
-                coordinateX.Add(col);
-                coordinateY.Add(row);
+                xPoint.Add(col);
+                yPoint.Add(row);
                 return true;
             }
             return false;
         }
         static void Main(string[] args)
         {
-            coordinateX = new List<int>();
-            coordinateX.Add(0);
-            coordinateY = new List<int>();
-            coordinateY.Add(0);
-            Console.Write(PathExist(0));
+            xPoint = new List<int>();
+            xPoint.Add(0);
+            yPoint = new List<int>();
+            yPoint.Add(0);
+            Console.WriteLine(PathExist(0));
+
+            Console.Write("Coordinates of x point: ");
+            //Here we list the coordinates on the x point to the exit
+            foreach (var item in xPoint)
+            {
+                Console.Write($"{item} ");
+            }
+
+            Console.WriteLine();
+            Console.Write("Coordinates of y point: ");
+            //Here we list the coordinates on the y point to the exit
+            foreach (var item in yPoint)
+            {
+                Console.Write($"{item} ");
+            }
         }
     }
 }
