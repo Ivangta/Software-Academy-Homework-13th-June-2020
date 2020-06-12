@@ -7,7 +7,7 @@ namespace Software_Academy_Homework_13th_June_2020
     {
         static int rows = 10;
         static int cols = 10;
-        static byte[,] matrix =
+        static byte[,] labyrinth =
             {
             { 0, 1, 1, 0, 0, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 1, 1, 1, 1, 1, 0, 1 },
@@ -53,9 +53,9 @@ namespace Software_Academy_Homework_13th_June_2020
         {
             if (row >= 0 && row < rows &&
                 col >= 0 && col < cols &&
-                matrix[row, col] == 0)
+                labyrinth[row, col] == 0)
             {
-                matrix[row, col] = 1;
+                labyrinth[row, col] = 1;
                 xPoint.Add(col);
                 yPoint.Add(row);
                 return true;
